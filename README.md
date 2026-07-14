@@ -42,6 +42,16 @@ Instagram DM rather than a form.
 
 Content edits (new walks, testimonials, FAQ answers) only require touching `src/data.ts`.
 
+## Instagram & marketing production
+
+- **`docs/instagram-playbook.md`** — the canonical rules for generating on-brand social
+  imagery: formats & dimensions, palette, typography, layout system, post recipes,
+  hashtag library, the HTML-canvas → JPG export workflow, and the brand photo-filter
+  presets (§12). Claude Code follows this when asked to make a post or filter a photo.
+- **`_handoff/instagram-kit/`** — the as-delivered client social kit (frozen): open
+  `Instagram-Kit.html` in a browser to see the profile, 9-post launch grid, story
+  templates and highlight covers rendered; reference photography in `img/`.
+
 ## Brand rules (from the client)
 
 - Brand is spelled **Sisi** (one "s" in the middle), never "Sissi".
@@ -51,8 +61,8 @@ Content edits (new walks, testimonials, FAQ answers) only require touching `src/
 
 ## Before shipping / TODO
 
-- [ ] **Add the social media kit to `_handoff/`** — referenced by the client but not yet in the repo; the Instagram grid and post links should be rebuilt from it.
-- [ ] **Swap Instagram grid placeholders** — `INSTAGRAM_POSTS` in `src/data.ts` reuses site photography and links to the profile; replace with real post images + post URLs.
+- [x] **Add the social media kit to `_handoff/`** — now in `_handoff/instagram-kit/`; production rules distilled into `docs/instagram-playbook.md`.
+- [ ] **Swap Instagram grid placeholders** — `INSTAGRAM_POSTS` in `src/data.ts` reuses site photography and links to the profile; replace with real post images + post URLs (rebuild from `_handoff/instagram-kit/`).
 - [ ] **Confirm the Instagram handle** — the site assumes `@sisiclub` (from the original brief); verify before launch.
 - [ ] **Replace placeholder content with real material from the client**: testimonials (`src/data.ts`), stat numbers and Lenka's founding story (`src/components/About.tsx`).
 - [ ] **Verify the `hello@sisi.club` mailbox exists** — `CONTACT_EMAIL` was aligned to the site domain (the handoff showed `hello@sisiclub.ch`).
