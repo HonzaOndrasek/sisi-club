@@ -1,4 +1,4 @@
-import { TRIPS } from "../data";
+import { INSTAGRAM_DM_URL, TRIPS } from "../data";
 import { PawIcon } from "../icons";
 
 export default function Trips() {
@@ -45,6 +45,17 @@ export default function Trips() {
                     <PawIcon fill="#9a7f4f" size={17} /> Dog-friendly
                   </span>
                 </div>
+                <a
+                  className="trip-join"
+                  href={INSTAGRAM_DM_URL}
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  Join this walk
+                  <span aria-hidden="true" className="trip-join-arrow">
+                    →
+                  </span>
+                </a>
               </div>
             </article>
           ))}

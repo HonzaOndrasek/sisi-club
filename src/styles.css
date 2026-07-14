@@ -689,6 +689,31 @@ body {
   color: var(--gold);
 }
 
+.trip-join {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 16px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--gold-text);
+}
+
+.trip-join-arrow {
+  transition: transform 0.2s ease;
+}
+
+.trip-join:hover .trip-join-arrow {
+  transform: translateX(4px);
+}
+
+.trip-join:hover {
+  color: var(--text-heading);
+}
+
 /* ============ Instagram ============ */
 .instagram {
   padding: var(--section-pad-y) var(--section-pad-x);
