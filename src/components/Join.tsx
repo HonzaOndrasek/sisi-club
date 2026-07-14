@@ -1,63 +1,30 @@
-import { useState } from "react";
-import type { FormEvent } from "react";
-import { DEFAULT_PACE, PACE_OPTIONS } from "../data";
-import { HeartIcon, MountainIcon, PawIcon } from "../icons";
+import {
+  CONTACT_EMAIL,
+  INSTAGRAM_DM_URL,
+  INSTAGRAM_HANDLE,
+  INSTAGRAM_URL,
+} from "../data";
+import { HeartIcon, InstagramIcon, MountainIcon, PawIcon } from "../icons";
 
-const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-type Errors = {
-  name?: string;
-  email?: string;
-};
+const STEPS = [
+  {
+    title: `Follow @${INSTAGRAM_HANDLE}`,
+    detail:
+      "That's where every walk is announced — dates, meeting points, and the dog plan.",
+  },
+  {
+    title: "Send us a DM",
+    detail:
+      "Say hello, tell us your pace, and introduce your dog if you have one. That's the whole application.",
+  },
+  {
+    title: "Come walk with us",
+    detail:
+      "We'll reply with the details of the next walk and add you to the circle.",
+  },
+];
 
 export default function Join() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [level, setLevel] = useState<string>(DEFAULT_PACE);
-  const [dog, setDog] = useState<boolean | null>(null);
-  const [submitted, setSubmitted] = useState(false);
-  const [errors, setErrors] = useState<Errors>({});
-  const [honeypot, setHoneypot] = useState("");
-
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    if (honeypot) {
-      return;
-    }
-    const trimmedName = name.trim();
-    const nextErrors: Errors = {};
-    if (!trimmedName) {
-      nextErrors.name = "Please tell us your first name.";
-    }
-    if (!EMAIL_PATTERN.test(email.trim())) {
-      nextErrors.email = "Please enter a valid email address.";
-    }
-    setErrors(nextErrors);
-    if (nextErrors.name || nextErrors.email) {
-      return;
-    }
-    // TODO: POST { name, email, pace: level, dog } to the membership backend
-    // once one exists — the prototype spec ships with local state only.
-    setName(trimmedName);
-    setSubmitted(true);
-  };
-
-  const handleReset = () => {
-    setName("");
-    setEmail("");
-    setDog(null);
-    setLevel(DEFAULT_PACE);
-    setErrors({});
-    setSubmitted(false);
-  };
-
-  const dogLine =
-    dog === true
-      ? "Tell your dog the good news — there's a walk to plan. 🐾"
-      : dog === false
-        ? "A walk awaits — and there'll be plenty of dogs to borrow."
-        : "A walk awaits.";
-
   return (
     <section className="join" id="join">
       <div className="join-grid">
@@ -65,9 +32,8 @@ export default function Join() {
           <div className="eyebrow">Join the club</div>
           <h2 className="section-heading join-heading">Come walk with us.</h2>
           <p className="join-body">
-            Membership is free and always will be. Sign up and we'll add you to
-            the circle — you'll get an invitation to our next walk, dog and
-            all.
+            Membership is free and always will be. The club lives on
+            Instagram — one message and you're in, dog and all.
           </p>
           <div className="join-features">
             <div className="join-feature">
@@ -86,111 +52,44 @@ export default function Join() {
         </div>
 
         <div className="form-card">
-          {submitted ? (
-            <div className="form-success">
-              <div aria-hidden="true" className="form-success-emoji">
-                🏔️
-              </div>
-              <h3 className="form-success-heading">Welcome, {name}!</h3>
-              <p className="form-success-body">
-                You're one of us now. Keep an eye on your inbox — your
-                invitation to our next walk is on its way.
-              </p>
-              <p className="form-success-dogline">{dogLine}</p>
-              <button className="form-reset" onClick={handleReset} type="button">
-                Sign up another friend
-              </button>
-            </div>
-          ) : (
-            <form noValidate onSubmit={handleSubmit}>
-              <label className="form-label" htmlFor="join-name">
-                First name
-              </label>
-              <input
-                aria-invalid={errors.name ? "true" : undefined}
-                className="form-input"
-                id="join-name"
-                onChange={(e) => setName(e.target.value)}
-                placeholder="Elisabeth"
-                type="text"
-                value={name}
-              />
-              {errors.name && <p className="form-error">{errors.name}</p>}
-
-              <label className="form-label" htmlFor="join-email">
-                Email
-              </label>
-              <input
-                aria-invalid={errors.email ? "true" : undefined}
-                className="form-input"
-                id="join-email"
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="you@email.com"
-                type="email"
-                value={email}
-              />
-              {errors.email && <p className="form-error">{errors.email}</p>}
-
-              <label className="form-label" htmlFor="join-pace">
-                Your walking pace
-              </label>
-              <select
-                className="form-select"
-                id="join-pace"
-                onChange={(e) => setLevel(e.target.value)}
-                value={level}
-              >
-                {PACE_OPTIONS.map((option) => (
-                  <option key={option}>{option}</option>
-                ))}
-              </select>
-
-              <span className="form-label dog-label" id="join-dog-label">
-                Bringing a dog?
-              </span>
-              <div
-                aria-labelledby="join-dog-label"
-                className="dog-toggle"
-                role="group"
-              >
-                <button
-                  aria-pressed={dog === true}
-                  className={`dog-option${dog === true ? " is-selected" : ""}`}
-                  onClick={() => setDog(true)}
-                  type="button"
-                >
-                  Yes, a good one 🐾
-                </button>
-                <button
-                  aria-pressed={dog === false}
-                  className={`dog-option${dog === false ? " is-selected" : ""}`}
-                  onClick={() => setDog(false)}
-                  type="button"
-                >
-                  Not this time
-                </button>
-              </div>
-
-              <div aria-hidden="true" className="form-honeypot">
-                <label htmlFor="join-website">Website</label>
-                <input
-                  autoComplete="off"
-                  id="join-website"
-                  onChange={(e) => setHoneypot(e.target.value)}
-                  tabIndex={-1}
-                  type="text"
-                  value={honeypot}
-                />
-              </div>
-
-              <button className="form-submit" type="submit">
-                Sign me up
-              </button>
-              <p className="form-fineprint">
-                It's free. We'll only email you about walks.
-              </p>
-            </form>
-          )}
+          <ol className="join-steps">
+            {STEPS.map((step, index) => (
+              <li className="join-step" key={step.title}>
+                <span aria-hidden="true" className="join-step-number">
+                  {index + 1}
+                </span>
+                <div>
+                  <div className="join-step-title">{step.title}</div>
+                  <p className="join-step-detail">{step.detail}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+          <a
+            className="form-submit join-dm-button"
+            href={INSTAGRAM_DM_URL}
+            rel="noreferrer"
+            target="_blank"
+          >
+            <InstagramIcon fill="currentColor" size={17} />
+            Message us on Instagram
+          </a>
+          <p className="form-fineprint">
+            Not on Instagram? Write to us at{" "}
+            <a className="join-email-link" href={`mailto:${CONTACT_EMAIL}`}>
+              {CONTACT_EMAIL}
+            </a>{" "}
+            — or find us at{" "}
+            <a
+              className="join-email-link"
+              href={INSTAGRAM_URL}
+              rel="noreferrer"
+              target="_blank"
+            >
+              @{INSTAGRAM_HANDLE}
+            </a>
+            .
+          </p>
         </div>
       </div>
     </section>

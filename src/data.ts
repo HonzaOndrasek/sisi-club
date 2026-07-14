@@ -12,56 +12,60 @@ export type Trip = {
 };
 
 export const TRIPS: Trip[] = [
-  {
-    name: "Lauenen Lake Loop",
-    region: "Gstaad · Bernese Oberland",
-    level: "Gentle",
-    tagColor: "#879375",
-    date: "Jul 12",
-    distance: "8 km",
-    duration: "3 hrs",
-    note: "A storybook turquoise lake ringed by meadows and waterfalls. Flat, flowery, and made for dogs to splash.",
-    image: "/images/hikes/lauenen.png",
-    imageAlt: "Turquoise Lauenen lake ringed by alpine meadows",
-  },
+  // TODO: all dates are prototype placeholders — confirm the real schedule
+  // with the client before launch.
   {
     name: "Five Lakes Walk",
     region: "Zermatt · Valais",
     level: "Moderate",
-    tagColor: "#9a7f4f",
+    tagColor: "#7a6337",
     date: "Aug 9",
     distance: "9.3 km",
     duration: "4 hrs",
     note: "Five alpine lakes, each mirroring the Matterhorn. The classic — and worth every step for the views.",
-    image: "/images/hikes/fivelakes.png",
+    image: "/images/hikes/fivelakes.webp",
     imageAlt: "The Matterhorn mirrored in an alpine lake near Zermatt",
   },
   {
     name: "Wispile Ridge & Picnic",
     region: "Gstaad · Bernese Oberland",
     level: "Moderate",
-    tagColor: "#9a7f4f",
+    tagColor: "#7a6337",
     date: "Aug 23",
     distance: "11 km",
     duration: "4.5 hrs",
     note: "A breezy ridge walk with 360° peaks, ending in a long alpine picnic in the grass. Blankets provided.",
-    image: "/images/hikes/wispile.png",
+    image: "/images/hikes/wispile.webp",
     imageAlt: "Grassy Wispile ridge with panoramic alpine peaks",
+  },
+  {
+    name: "Lauenen Lake Loop",
+    region: "Gstaad · Bernese Oberland",
+    level: "Gentle",
+    tagColor: "#5f6b50",
+    date: "Sep 6",
+    distance: "8 km",
+    duration: "3 hrs",
+    note: "A storybook turquoise lake ringed by meadows and waterfalls. Flat, flowery, and made for dogs to splash.",
+    image: "/images/hikes/lauenen.webp",
+    imageAlt: "Turquoise Lauenen lake ringed by alpine meadows",
   },
   {
     name: "Salève Sunrise Stroll",
     region: "Around Geneva",
     level: "Gentle",
-    tagColor: "#879375",
+    tagColor: "#5f6b50",
     date: "Monthly",
     distance: "5 km",
     duration: "2 hrs",
     note: "Our home mountain. We meet at dawn, climb gently, and watch the city wake up over coffee and croissants.",
-    image: "/images/hikes/geneva.png",
+    image: "/images/hikes/geneva.webp",
     imageAlt: "Sunrise over Geneva seen from the Salève",
   },
 ];
 
+// TODO: these testimonials are PLACEHOLDERS written for the prototype.
+// Replace with real member quotes from the client before launch.
 export type Testimonial = {
   quote: string;
   name: string;
@@ -126,14 +130,53 @@ export const FAQS: FaqItem[] = [
   },
 ];
 
-export const PACE_OPTIONS = [
-  "Gentle stroller — happy to amble",
-  "Day hiker — a few hours is lovely",
-  "Summit seeker — take me high",
-] as const;
+// Aligned with the site domain; the handoff prototype showed hello@sisiclub.ch,
+// which doesn't match sisi.club — double-check the mailbox exists before launch.
+export const CONTACT_EMAIL = "hello@sisi.club";
 
-export const DEFAULT_PACE = PACE_OPTIONS[0];
+export const INSTAGRAM_HANDLE = "sisiclub";
+export const INSTAGRAM_URL = `https://www.instagram.com/${INSTAGRAM_HANDLE}/`;
+// Deep link that opens a DM thread with the account.
+export const INSTAGRAM_DM_URL = `https://ig.me/m/${INSTAGRAM_HANDLE}`;
 
-// TODO: confirm the correct contact address with the client before shipping —
-// the domain is sisi.club, but the handoff prototype showed hello@sisiclub.ch.
-export const CONTACT_EMAIL = "hello@sisiclub.ch";
+export type InstaPost = {
+  image: string;
+  alt: string;
+  href: string;
+};
+
+// TODO: placeholder tiles reusing site photography. Swap each `image` for an
+// exported Instagram post image (from the social media kit) and each `href`
+// for the real post URL, e.g. https://www.instagram.com/p/XXXXXXXXXXX/.
+export const INSTAGRAM_POSTS: InstaPost[] = [
+  {
+    image: "/images/hikes/lauenen.webp",
+    alt: "Turquoise Lauenen lake ringed by alpine meadows",
+    href: INSTAGRAM_URL,
+  },
+  {
+    image: "/images/picnic.webp",
+    alt: "Sisi Club women sharing an alpine picnic with their dog",
+    href: INSTAGRAM_URL,
+  },
+  {
+    image: "/images/hikes/fivelakes.webp",
+    alt: "The Matterhorn mirrored in an alpine lake near Zermatt",
+    href: INSTAGRAM_URL,
+  },
+  {
+    image: "/images/founder.webp",
+    alt: "Lenka with her dog Falco in an alpine meadow",
+    href: INSTAGRAM_URL,
+  },
+  {
+    image: "/images/hikes/wispile.webp",
+    alt: "Grassy Wispile ridge with panoramic alpine peaks",
+    href: INSTAGRAM_URL,
+  },
+  {
+    image: "/images/hikes/geneva.webp",
+    alt: "Sunrise over Geneva seen from the Salève",
+    href: INSTAGRAM_URL,
+  },
+];

@@ -8,6 +8,22 @@ export default function Testimonials() {
           <div className="eyebrow">In their words</div>
           <h2 className="section-heading">Why they keep coming back</h2>
         </div>
+        <figure className="picnic-frame">
+          <img
+            alt="Sisi Club women sharing a relaxed alpine picnic with their dog"
+            className="picnic-image"
+            height={1024}
+            loading="lazy"
+            src="/images/picnic.webp"
+            width={1536}
+          />
+          <figcaption className="picnic-caption">
+            <div className="picnic-eyebrow">After the climb</div>
+            <div className="picnic-quote">
+              Tea, fresh bread, wildflowers — and a dozen very good dogs.
+            </div>
+          </figcaption>
+        </figure>
         <div className="testimonials-grid">
           {TESTIMONIALS.map((t) => (
             <figure className="testimonial-card" key={t.name}>

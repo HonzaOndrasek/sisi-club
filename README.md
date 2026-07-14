@@ -25,12 +25,20 @@ pnpm preview   # serve the production build locally
 ```
 src/
   App.tsx               section order for the one-pager
-  data.ts               trips, testimonials, FAQ, pace options, contact email
-  icons.tsx             brand SVG icons (heart, paw, mountain, flower, moon)
+  data.ts               trips, testimonials, FAQ, Instagram posts/links, contact email
+  icons.tsx             brand SVG icons (heart, paw, mountain, flower, moon, instagram)
   styles.css            design tokens + all component styles
   components/           one component per page section
-public/images/          client photography (hero, founder, picnic, empress, hikes/)
+public/images/          client photography as WebP (hero, founder, picnic, empress, hikes/)
+                        + og-picnic.jpg (JPEG social-preview card — some crawlers drop WebP)
 ```
+
+Section order (per client feedback, July 2026): hero → values → **the story of
+Sisi** → walks → **Instagram grid** → Lenka & Falco → testimonials (opening
+with the picnic band) → FAQ → join. The site is positioned as a support site for **@sisiclub** on
+Instagram: dual CTA in the hero (join first, follow second), curated static
+post grid (`INSTAGRAM_POSTS` in `src/data.ts`), and joining happens via
+Instagram DM rather than a form.
 
 Content edits (new walks, testimonials, FAQ answers) only require touching `src/data.ts`.
 
@@ -43,7 +51,9 @@ Content edits (new walks, testimonials, FAQ answers) only require touching `src/
 
 ## Before shipping / TODO
 
-- [ ] **Confirm the contact email** — the design handoff showed `hello@sisiclub.ch`, but the domain is `sisi.club`. Update `CONTACT_EMAIL` in `src/data.ts`.
-- [ ] **Wire the signup form to a real backend** — it currently validates (required name, valid email, honeypot) and shows the success state locally without POSTing anywhere. See the TODO in `src/components/Join.tsx`.
-- [ ] **Optimize images** — the source photos in `public/images/` are large PNGs from the client; convert to WebP/AVIF with `srcset` before heavy traffic.
-- [ ] Update trip dates in `src/data.ts` as the season progresses.
+- [ ] **Add the social media kit to `_handoff/`** — referenced by the client but not yet in the repo; the Instagram grid and post links should be rebuilt from it.
+- [ ] **Swap Instagram grid placeholders** — `INSTAGRAM_POSTS` in `src/data.ts` reuses site photography and links to the profile; replace with real post images + post URLs.
+- [ ] **Confirm the Instagram handle** — the site assumes `@sisiclub` (from the original brief); verify before launch.
+- [ ] **Replace placeholder content with real material from the client**: testimonials (`src/data.ts`), stat numbers and Lenka's founding story (`src/components/About.tsx`).
+- [ ] **Verify the `hello@sisi.club` mailbox exists** — `CONTACT_EMAIL` was aligned to the site domain (the handoff showed `hello@sisiclub.ch`).
+- [ ] **Confirm real trip dates** — all dates in `src/data.ts` are placeholders (Lauenen's "Sep 6" is invented).

@@ -1,4 +1,5 @@
-import { CONTACT_EMAIL } from "../data";
+import { CONTACT_EMAIL, INSTAGRAM_HANDLE, INSTAGRAM_URL } from "../data";
+import { InstagramIcon } from "../icons";
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -18,14 +19,14 @@ export default function Footer() {
           <div>
             <div className="footer-column-title">Explore</div>
             <div className="footer-column-links">
-              <a className="footer-link" href="#about">
-                About
+              <a className="footer-link" href="#story">
+                The story
               </a>
               <a className="footer-link" href="#trips">
-                Trips
+                Walks
               </a>
-              <a className="footer-link" href="#inspiration">
-                Inspiration
+              <a className="footer-link" href="#about">
+                About
               </a>
               <a className="footer-link" href="#faq">
                 FAQ
@@ -37,6 +38,15 @@ export default function Footer() {
             <div className="footer-column-links">
               <a className="footer-join-link" href="#join">
                 Join the club →
+              </a>
+              <a
+                className="footer-link footer-instagram"
+                href={INSTAGRAM_URL}
+                rel="noreferrer"
+                target="_blank"
+              >
+                <InstagramIcon fill="currentColor" size={15} />@
+                {INSTAGRAM_HANDLE}
               </a>
               <a className="footer-link" href={`mailto:${CONTACT_EMAIL}`}>
                 {CONTACT_EMAIL}

@@ -4,10 +4,10 @@ const ICON_GOLD = "#9a7f4f";
 
 export default function Inspiration() {
   return (
-    <section className="inspiration" id="inspiration">
+    <section className="inspiration" id="story">
       <div className="inspiration-grid">
         <div>
-          <div className="eyebrow">Our inspiration</div>
+          <div className="eyebrow">The story of Sisi</div>
           <h2 className="section-heading inspiration-heading">
             In the footsteps of an empress
           </h2>
@@ -26,10 +26,11 @@ export default function Inspiration() {
             companions.
           </p>
           <p className="inspiration-body">
-            She loved these mountains and the shores of Lac Léman as dearly as
-            we do. We borrowed her name, her walking shoes, and her firm
-            conviction that a life is best measured in miles walked and muddy
-            paws.
+            And she loved these shores most of all. Sisi returned to Lac Léman
+            again and again — Geneva was where her long wandering ended, and
+            her statue still watches the lake from the city's promenade. We
+            borrowed her name, her walking shoes, and her firm conviction that
+            a life is best measured in miles walked and muddy paws.
           </p>
           <div className="pull-quote">
             <div className="pull-quote-text">
@@ -54,7 +55,10 @@ export default function Inspiration() {
           <img
             alt="Empress Elisabeth (Sisi) of Austria walking with her hound by an alpine lake"
             className="inspiration-portrait"
-            src="/images/empress.png"
+            height={1448}
+            loading="lazy"
+            src="/images/empress.webp"
+            width={1086}
           />
           <div className="inspiration-caption">
             Empress Elisabeth of Austria · 1837–1898
