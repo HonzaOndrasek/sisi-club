@@ -51,6 +51,18 @@ export const TRIPS: Trip[] = [
     imageAlt: "Turquoise Lauenen lake ringed by alpine meadows",
   },
   {
+    name: "Oeschinensee Panorama",
+    region: "Kandersteg · Bernese Oberland",
+    level: "Moderate",
+    tagColor: "#7a6337",
+    date: "Sep 20",
+    distance: "8.5 km",
+    duration: "4 hrs",
+    note: "A turquoise lake walled in by cliffs and waterfalls. The gondola does the climbing; we do the wandering.",
+    image: "/images/hikes/oeschinensee.webp",
+    imageAlt: "Turquoise Oeschinensee beneath cliff walls and waterfalls",
+  },
+  {
     name: "Salève Sunrise Stroll",
     region: "Around Geneva",
     level: "Gentle",
